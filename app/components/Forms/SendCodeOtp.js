@@ -14,6 +14,8 @@ import brand from 'dan-api/dummy/brand';
 import logo from 'dan-images/logo.svg';
 import { TextFieldRedux } from './ReduxFormMUI';
 import styles from './user-jss';
+import { useHistory } from "react-router-dom";
+import axios from 'axios';
 
 // validation functions
 const required = value => (value === null ? 'Required' : undefined);
@@ -23,14 +25,19 @@ const email = value => (
     : undefined
 );
 
-function ResetForm(props) {
-  const {
-    classes,
+function SendCodeOtp(props) {
+
+
+    const {
+    classes,  
     handleSubmit,
     pristine,
     submitting,
     deco,
   } = props;
+
+
+
 
   return (
     <Paper className={classNames(classes.paperWrap, deco && classes.petal)}>
@@ -46,18 +53,34 @@ function ResetForm(props) {
       <Typography variant="caption" className={classes.subtitle} gutterBottom align="center">
         Send reset password link to Your email
       </Typography>
-      <section className={classes.formWrap}>
+      <section>
         <form onSubmit={handleSubmit}>
         
        <div>
         <FormControl className={classes.formControl}>
           <Field
+            onChange={(e) => console.log(e.target.value)}
             name="emailUser"
             component={TextFieldRedux}
             placeholder="Your Email"
             label="Your Email"
             required
             validate={[required, email]}
+            className={classes.field}
+          />
+          
+        </FormControl>
+      </div>
+
+      <div>
+        <FormControl className={classes.formControl}>
+          <Field
+            name="code"
+            component={TextFieldRedux}
+            placeholder="code"
+            label="code"
+            required
+            // validate={[required, email]}
             className={classes.field}
           />
           
@@ -77,7 +100,7 @@ function ResetForm(props) {
   );
 }
 
-ResetForm.propTypes = {
+SendCodeOtp.propTypes = {
   classes: PropTypes.object.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   pristine: PropTypes.bool.isRequired,
@@ -85,15 +108,15 @@ ResetForm.propTypes = {
   deco: PropTypes.bool.isRequired,
 };
 
-const ResetFormReduxed = reduxForm({
+const SendCodeOtpReduxed = reduxForm({
   form: 'resetFrm',
   enableReinitialize: true,
-})(ResetForm);
+})(SendCodeOtp);
 
 const RegisterFormMapped = connect(
   state => ({
     deco: state.ui.decoration
   }),
-)(ResetFormReduxed);
+)(SendCodeOtpReduxed);
 
 export default withStyles(styles)(RegisterFormMapped);

@@ -5,11 +5,13 @@ import { PapperBlock } from 'dan-components';
 import StrippedTable from '../Table/StrippedTable';
 import { useState, useEffect } from 'react';
 
+import "./index.css"
+
 function BlankPage() {
   const title = brand.name + ' - Blank Page';
   const description = brand.desc;
   const [users, setUsers] = useState([])
-  // console.log("dada",users)
+  
 
 useEffect(() => {
 
@@ -42,16 +44,15 @@ useEffect(() => {
         <meta property="twitter:description" content={description} />
       </Helmet>
       <PapperBlock title="USER" desc="All user Information">
+
+     
        <>
-
        {           
-
-          <StrippedTable users={users}></StrippedTable>
-        
+          <StrippedTable users={users}></StrippedTable>        
        }
-       
        </>
       </PapperBlock>
+      
     </div>
   );
 }

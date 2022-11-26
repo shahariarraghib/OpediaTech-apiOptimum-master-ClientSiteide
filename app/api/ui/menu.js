@@ -9,6 +9,7 @@ module.exports = [
         name: 'Welcome Page',
         title: true,
       },
+
       {
         key: 'blank',
         name: 'User',
@@ -16,7 +17,13 @@ module.exports = [
         icon: 'ion-ios-document-outline',
       },
 
-    
+      {
+        key: 'Insurance',
+        name: 'Insurance',
+        link: '/app/pages/table',
+        icon: 'ion-ios-grid-outline',
+      },
+            
       {
         key: 'main_page',
         name: 'Sample Page',
@@ -34,12 +41,7 @@ module.exports = [
         link: '/app/pages/form',
         icon: 'ion-ios-list-box-outline',
       },
-      {
-        key: 'table',
-        name: 'Table',
-        link: '/app/pages/table',
-        icon: 'ion-ios-grid-outline',
-      },
+      
       {
         key: 'maintenance',
         name: 'Maintenance',
@@ -80,6 +82,20 @@ module.exports = [
         key: 'reset',
         name: 'Reset Password',
         link: '/reset-password',
+        icon: 'ion-ios-undo-outline'
+      },
+
+      {
+        key: 'reset',
+        name: 'Reset Password',
+        link: '/send-code',
+        icon: 'ion-ios-undo-outline'
+      },
+
+      {
+        key: 'reset',
+        name: 'Reset Password',
+        link: '/reset-password-code',
         icon: 'ion-ios-undo-outline'
       },
     ]

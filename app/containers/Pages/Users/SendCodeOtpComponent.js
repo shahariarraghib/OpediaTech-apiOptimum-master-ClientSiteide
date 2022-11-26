@@ -7,9 +7,10 @@ import { ResetForm } from 'dan-components';
 import styles from '../../../components/Forms/user-jss';
 import axios from 'axios';
 import { useHistory } from "react-router-dom";
+import SendCodeOtp from '../../../components/Forms/SendCodeOtp';
 
 
-function ResetPassword(props) {
+function SendCodeOtpComponent(props) {
   const [valueForm, setValueForm] = useState(null);
   const history = useHistory();
 
@@ -17,15 +18,15 @@ function ResetPassword(props) {
 
   const submitForm = useCallback((values) => {
     console.log(values)
-     axios.post("http://localhost:3890/api/forgot-password/get-passcode", values )
+     axios.post("http://localhost:3890/api/authentication/verifyPasscode", values )
      .then((res) => {
      
-      console.log(res)
-
+      console.log('res',res.data.token);
+      localStorage.setItem('token', res.data.token);
       setValueForm(values);
       setTimeout(() => {
         
-        history.push("/send-code");
+        history.push("/reset-password-code");
         // console.log(`You submitted:\n\n${valueForm}`); // eslint-disable-line
       }, 500); // simulate server latency
 
@@ -52,15 +53,15 @@ function ResetPassword(props) {
       </Helmet>
       <div className={classes.container}>
         <div className={classes.userFormWrap}>
-          <ResetForm onSubmit={(values) => submitForm(values)} />
+          <SendCodeOtp onSubmit={(values) => submitForm(values)} />
         </div>
       </div>
     </div>
   );
 }
 
-ResetPassword.propTypes = {
+SendCodeOtpComponent.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(ResetPassword);
+export default withStyles(styles)(SendCodeOtpComponent);

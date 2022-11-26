@@ -61,6 +61,7 @@ export const Parent = loadable(() =>
     fallback: <Loading />,
   });
 
+
   // export const a = loadable(() =>
   // import('./a'), {
   //   fallback: <Loading />,

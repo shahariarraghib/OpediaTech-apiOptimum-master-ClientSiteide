@@ -112,6 +112,7 @@
     "@material-ui/icons": "^4.11.2",
     "@material-ui/lab": "^4.0.0-alpha.60",
     "@material-ui/pickers": "^3.3.10",
+    "@mui/icons-material": "^5.10.15",
     "@mui/material": "^5.10.15",
     "@mui/styled-engine-sc": "^5.10.14",
     "@popperjs/core": "^2.11.2",

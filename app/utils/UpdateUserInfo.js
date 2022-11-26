@@ -9,22 +9,23 @@ const style = {
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: 400,
+    width: 600,
     bgcolor: 'background.paper',
-    border: '2px solid #000',
+    // border: '2px solid #e6fbff',
     boxShadow: 24,
     p: 4,
   };
 
   
 const UpdateUserInfo = ({open,handleClose,sentData}) => {
-    // console.log(sentData.id)
+    console.log(sentData.id)
     const { register, handleSubmit } = useForm();
     
 
 
      const onSubmit = data => {
-       fetch(`http://localhost:3890/api/users/update/${sentData.id}`, {
+      console.log(data)
+       fetch("http://localhost:3890/api/users/update", {
         method: "PUT",
         headers: {
             'content-type': 'application/json',
@@ -35,11 +36,9 @@ const UpdateUserInfo = ({open,handleClose,sentData}) => {
         .then((res) => res.json())
         .then((data) => {
           console.log(data)
-        });
-  
-    
-    
+        });    
       };
+      
     return (
         <div>
        
@@ -56,16 +55,21 @@ const UpdateUserInfo = ({open,handleClose,sentData}) => {
           // }}
         >
           <Box sx={style}>
-            <Typography id="modal-modal-title" variant="h6" component="h2">
+            {/* <Typography id="modal-modal-title" variant="h6" component="h2">
               nomUser:     {sentData.nomUser}
-            </Typography>
+            </Typography> */}
             {/* <Typography id="modal-modal-description" sx={{ mt: 2 }}> */}
           
 
           <form onSubmit={handleSubmit(onSubmit)}>
+          <label>Update User id:</label>
+          <input defaultValue={sentData.id} {...register("id")} />
     
           <label>Update User adrUser:</label>
-          <input defaultValue={sentData.adrUser} {...register("adrUser")} /><br/>
+          <input defaultValue={sentData.adrUser} {...register("adrUser")} />
+
+          <label>Update User localityUser:</label>
+          <input defaultValue={sentData.localityUser} {...register("localityUser")} />
           
           <label>Update User validiteAdresse:</label>
           <input defaultValue={sentData.validiteAdresse} {...register("validiteAdresse")} /> 

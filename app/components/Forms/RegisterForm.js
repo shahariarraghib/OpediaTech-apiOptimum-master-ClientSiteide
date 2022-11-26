@@ -100,22 +100,129 @@ function RegisterForm(props) {
               <div>
                 <FormControl className={classes.formControl}>
                   <Field
-                    name="name"
+                    name="nomUser"
                     component={TextFieldRedux}
-                    placeholder="Username"
-                    label="Username"
+                    placeholder="nomUser"
+                    label="nomUser"
                     required
                     className={classes.field}
                   />
                 </FormControl>
               </div>
+
               <div>
                 <FormControl className={classes.formControl}>
                   <Field
-                    name="email"
+                    name="prenomUser"
                     component={TextFieldRedux}
-                    placeholder="Your Email"
-                    label="Your Email"
+                    placeholder="prenomUser"
+                    label="prenomUser"
+                    required
+                    className={classes.field}
+                  />
+                </FormControl>
+              </div>
+
+              <div>
+                <FormControl className={classes.formControl}>
+                  <Field
+                    name="birthdayUser"
+                    component={TextFieldRedux}
+                    placeholder="YY/MM/DD"
+                    label="birthdayUser"
+                    required
+                    className={classes.field}
+                  />
+                </FormControl>
+              </div>
+
+              <div>
+                <FormControl className={classes.formControl}>
+                  <Field
+                    name="nationalityUser"
+                    component={TextFieldRedux}
+                    placeholder="nationalityUser"
+                    label="nationalityUser"
+                    required
+                    className={classes.field}
+                  />
+                </FormControl>
+              </div>
+
+              <div>
+                <FormControl className={classes.formControl}>
+                  <Field
+                    name="adrUser"
+                    component={TextFieldRedux}
+                    placeholder="adrUser"
+                    label="adrUser"
+                    required
+                    className={classes.field}
+                  />
+                </FormControl>
+              </div>
+
+
+              <div>
+                <FormControl className={classes.formControl}>
+                  <Field
+                    name="postalUser"
+                    component={TextFieldRedux}
+                    placeholder="postalUser"
+                    label="postalUser"
+                    required
+                    className={classes.field}
+                  />
+                </FormControl>
+              </div>
+
+              <div>
+                <FormControl className={classes.formControl}>
+                  <Field
+                    name="localityUser"
+                    component={TextFieldRedux}
+                    placeholder="localityUser"
+                    label="localityUser"
+                    required
+                    className={classes.field}
+                  />
+                </FormControl>
+              </div>
+
+              <div>
+                <FormControl className={classes.formControl}>
+                  <Field
+                    name="codeCounsellor"
+                    component={TextFieldRedux}
+                    placeholder="codeCounsellor"
+                    label="codeCounsellor"
+                    required
+                    className={classes.field}
+                  />
+                </FormControl>
+              </div>
+
+              <div>
+                <FormControl className={classes.formControl}>
+                  <Field
+                    name="telUser"
+                    component={TextFieldRedux}
+                    placeholder="telUser"
+                    label="telUser"
+                    required
+                    className={classes.field}
+                  />
+                </FormControl>
+              </div>
+              
+
+              <div>
+                <FormControl className={classes.formControl}>
+                  <Field
+                    name="emailUser"
+                    component={TextFieldRedux}
+                    placeholder="emailUser"
+                    label="emailUser"
                     required
                     validate={[required, email]}
                     className={classes.field}
@@ -125,17 +232,19 @@ function RegisterForm(props) {
               <div>
                 <FormControl className={classes.formControl}>
                   <Field
-                    name="password"
+                    name="passwordUser"
                     component={TextFieldRedux}
-                    type="password"
-                    label="Your Password"
+                    type="passwordUser"
+                    label="passwordUser"
                     required
-                    validate={[required, passwordsMatch]}
+                    // validate={[required, passwordsMatch]}
                     className={classes.field}
                   />
                 </FormControl>
               </div>
-              <div>
+
+
+              {/* <div>
                 <FormControl className={classes.formControl}>
                   <Field
                     name="passwordConfirm"
@@ -147,7 +256,51 @@ function RegisterForm(props) {
                     className={classes.field}
                   />
                 </FormControl>
+              </div> */}
+
+              <div>
+                <FormControl className={classes.formControl}>
+                  <Field
+                    name="photoUser"
+                    component={TextFieldRedux}
+                    placeholder="photoUser"
+                    label="photoUser"
+                    required
+                    
+                    className={classes.field}
+                  />
+                </FormControl>
               </div>
+
+              <div>
+                <FormControl className={classes.formControl}>
+                  <Field
+                    name="validiteAdresse"
+                    component={TextFieldRedux}
+                    placeholder="validiteAdresse"
+                    label="validiteAdresse"
+                    required
+                    
+                    className={classes.field}
+                  />
+                </FormControl>
+              </div>
+
+
+              <div>
+                <FormControl className={classes.formControl}>
+                  <Field
+                    name="typeusers"
+                    component={TextFieldRedux}
+                    placeholder="typeusers"
+                    label="typeusers"
+                    required
+                    
+                    className={classes.field}
+                  />
+                </FormControl>
+              </div>
+
               <div>
                 <FormControlLabel
                   control={(

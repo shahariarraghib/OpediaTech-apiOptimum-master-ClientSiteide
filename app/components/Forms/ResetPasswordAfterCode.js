@@ -23,7 +23,7 @@ const email = value => (
     : undefined
 );
 
-function ResetForm(props) {
+function ResetPasswordAfterCode(props) {
   const {
     classes,
     handleSubmit,
@@ -43,21 +43,23 @@ function ResetForm(props) {
       <Typography variant="h4" className={classes.title} gutterBottom>
         Reset Password
       </Typography>
-      <Typography variant="caption" className={classes.subtitle} gutterBottom align="center">
+      {/* <Typography variant="caption" className={classes.subtitle} gutterBottom align="center">
         Send reset password link to Your email
-      </Typography>
+      </Typography> */}
       <section className={classes.formWrap}>
         <form onSubmit={handleSubmit}>
         
-       <div>
+     
+
+      <div>
         <FormControl className={classes.formControl}>
           <Field
-            name="emailUser"
+            name="newPassword"
             component={TextFieldRedux}
-            placeholder="Your Email"
-            label="Your Email"
+            placeholder="newPassword"
+            label="newPassword"
             required
-            validate={[required, email]}
+            // validate={[required, email]}
             className={classes.field}
           />
           
@@ -77,7 +79,7 @@ function ResetForm(props) {
   );
 }
 
-ResetForm.propTypes = {
+ResetPasswordAfterCode.propTypes = {
   classes: PropTypes.object.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   pristine: PropTypes.bool.isRequired,
@@ -85,15 +87,15 @@ ResetForm.propTypes = {
   deco: PropTypes.bool.isRequired,
 };
 
-const ResetFormReduxed = reduxForm({
+const ResetPasswordAfterCodeReduxed = reduxForm({
   form: 'resetFrm',
   enableReinitialize: true,
-})(ResetForm);
+})(ResetPasswordAfterCode);
 
 const RegisterFormMapped = connect(
   state => ({
     deco: state.ui.decoration
   }),
-)(ResetFormReduxed);
+)(ResetPasswordAfterCodeReduxed);
 
 export default withStyles(styles)(RegisterFormMapped);

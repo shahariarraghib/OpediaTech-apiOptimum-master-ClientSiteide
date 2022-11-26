@@ -5,16 +5,28 @@ import { withStyles } from '@material-ui/core/styles';
 import brand from 'dan-api/dummy/brand';
 import { RegisterForm } from 'dan-components';
 import styles from 'dan-components/Forms/user-jss';
+import axios from 'axios';
 
 function Register(props) {
   const [valueForm, setValueForm] = useState(null);
 
   const submitForm = values => {
-    setTimeout(() => {
-      setValueForm(values);
-      console.log(`You submitted:\n\n${valueForm}`);
-      window.location.href = '/app';
-    }, 500); // simulate server latency
+
+    console.log(values)
+    axios.post("http://localhost:3890/api/authentication/register", values )
+    .then((res) => {
+      console.log('res',res);
+      setTimeout(() => {
+        setValueForm(values);
+        console.log(`You submitted:\n\n${valueForm}`);
+        window.location.href = '/app';
+      }, 500);
+     
+
+
+    })
+
+    
   };
 
   const title = brand.name + ' - Register';
