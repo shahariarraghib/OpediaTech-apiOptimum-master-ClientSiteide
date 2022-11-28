@@ -1,9 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState,Fragment, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
-import brand from 'dan-api/dummy/brand';
+
 import { withStyles } from '@material-ui/core/styles';
-import { SourceReader, PapperBlock } from 'dan-components';
-import ReduxFormDemo from './ReduxFormDemo';
+
+// import ReduxFormDemo from './ReduxFormDemo';
+
+import brand from 'dan-api/dummy/brand';
+import { PapperBlock } from 'dan-components';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import Button from '@mui/material/Button';
+import UpdateOffer from '../../../utils/UpdateOffer';
 
 const styles = ({
   root: {
@@ -12,18 +22,37 @@ const styles = ({
 });
 
 function ReduxForm() {
-  const [valueForm, setValueForm] = useState(null);
-
-  const showResult = values => {
-    setTimeout(() => {
-      setValueForm(JSON.stringify(values));
-      console.log(`You submitted:\n\n${valueForm}`); // eslint-disable-line
-    }, 500); // simulate server latency
-  };
-
-  const title = brand.name + ' - Form';
+  const title = brand.name + ' - Table';
   const description = brand.desc;
-  const docSrc = 'containers/Pages/Forms/';
+  const [sentData, setSentData] = useState([])
+  const [users, setUsers] = useState([])
+  console.log(users)
+  // console.log(sentData)
+  useEffect(() => {
+
+    fetch("http://localhost:3890/api/contratoffre/getAll",{
+      method: 'GET',
+      headers: {
+          'content-type': 'application/json',
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+     
+  })
+      .then((res) => res.json())
+      .then((data) => {
+   
+    setUsers(data.data)
+  
+      });
+  }, []);
+
+
+  const [sentModalData, setSentModalData] = useState([])
+  // console.log(sentData)
+    const [open, setOpen] = React.useState(false);
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
+
   return (
     <div>
       <Helmet>
@@ -34,15 +63,72 @@ function ReduxForm() {
         <meta property="twitter:title" content={title} />
         <meta property="twitter:description" content={description} />
       </Helmet>
-      <PapperBlock title="Redux Form" icon="ion-ios-list-box-outline" desc="This is a simple demonstration of how to connect all the standard material-ui form elements to redux-form.">
+      <PapperBlock title="Offer" icon="ion-ios-list-box-outline" desc="Offer">
         <div>
-          <ReduxFormDemo onSubmit={(values) => showResult(values)} />
-          <p>Submited Result: </p>
-          <code>
-            {valueForm && valueForm.toString()}
-          </code>
-          <SourceReader componentName={docSrc + 'ReduxFormDemo.js'} />
+         
         </div>
+
+        <div>
+    <Fragment>
+    
+    
+      <div >
+        <Table >
+          <TableHead>
+            <TableRow>
+            <TableCell align="left">No.</TableCell>
+              <TableCell align="left">prixAssur</TableCell>
+              <TableCell align="left">operation</TableCell>
+              <TableCell align="left">nomUser</TableCell>
+              {/* <TableCell align="left">telUser</TableCell>
+              <TableCell align="left">emailUser</TableCell> */}
+            </TableRow>
+          </TableHead>
+          <TableBody>
+           
+
+             {users.map((user, index) => ( 
+              <TableRow >
+              <TableCell align="left">{index + 1}</TableCell>
+              <TableCell align="left">{user.operation}</TableCell>
+              <TableCell align="left">{user.prixOffre}</TableCell>
+              <TableCell align="left">{user.packoffre.id}</TableCell>
+              {/* <TableCell align="left">{user.user.telUser}</TableCell>
+              <TableCell align="left">{user.user.emailUser}</TableCell> */}
+              <TableCell align="left">
+
+              <Button
+              onClick={() => handleOpen(setSentModalData(user))} >
+              
+              Update Insurance
+            </Button>
+              </TableCell>
+              
+              </TableRow>
+            
+       
+           
+             ))
+
+             }
+          </TableBody>
+        </Table>
+      </div>
+    </Fragment>
+
+<UpdateOffer
+      handleClose={handleClose}
+      open={open}
+      sentModalData={sentModalData}
+      >
+
+</UpdateOffer>
+     
+    
+
+   
+    
+      </div>
       </PapperBlock>
     </div>
   );

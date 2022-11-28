@@ -37,23 +37,6 @@ function BasicTable(props) {
   }, []);
 
 
-  // const onSubmit = data => {
-  //   // console.log(data)
-  //   //  fetch(`http://localhost:3890/api/users/update/${sentData.id}`, {
-  //   //   method: "PUT",
-  //   //   headers: {
-  //   //       'content-type': 'application/json',
-  //   //       Authorization: `Bearer ${localStorage.getItem("token")}`,
-  //   //   },
-  //   //   body: JSON.stringify(data),
-  //   // })
-  //   //   .then((res) => res.json())
-  //   //   .then((data) => {
-  //   //     console.log(data)
-  //   //   });    
-  //   };
-
-
   const [sentModalData, setSentModalData] = useState([])
 // console.log(sentData)
   const [open, setOpen] = React.useState(false);

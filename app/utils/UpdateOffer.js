@@ -4,12 +4,6 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { useForm } from "react-hook-form";
-import FormData from 'form-data';
-import fs from "fs"
-import axios from 'axios';
-// var FormData = require('form-data');
-// var fs = require('fs');
-
 const style = {
     position: 'absolute',
     top: '50%',
@@ -22,37 +16,29 @@ const style = {
     p: 4,
   };
 
-const UpdateInsurance = ({open,handleClose,sentModalData}) => {
-    console.log(sentModalData)
-    const { register, handleSubmit, formState: { errors } } = useForm();
 
-  const onSubmit = (data) => {
+const UpdateOffer = ({open,handleClose,sentModalData}) => {
 
-    console.log('submit file',data);
+    const { register, handleSubmit, watch, formState: { errors } } = useForm();
+    const onSubmit = data => {
+        console.log(data);
 
-    // var d = new FormData();
-    // // fs.ReadStream
-    // d.append('document', fs.createReadStream(data));
-    const files = data.document[0]
-    const formData = new FormData()
-    formData.append('img', files)
-    
-    fetch("http://localhost:3890/api/files/documents/create", {
-        method: "POST",
+    fetch("http://localhost:3890/api/contratoffre/active", {
+        method: "PUT",
         headers: {
-            'content-type': 'application/pdf',
+            'content-type': 'application/json',
              Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
-        body: formData
+        // body: JSON.stringify(data)
       })
         .then((res) => res.json())
         .then((data) => {
           console.log(data)
         });
-    
- 
+    }
 
-  }
+
+
     return (
         <div>
         <Modal
@@ -69,16 +55,20 @@ const UpdateInsurance = ({open,handleClose,sentModalData}) => {
         >
           <Box sx={style}>
             <Typography id="modal-modal-title" variant="h6" component="h2">
-             Update Insurance
+             Update Offer
             </Typography>
             <Typography id="modal-modal-description" sx={{ mt: 2 }}> 
-          
-      <form onSubmit={handleSubmit(onSubmit)}>
+          <form onSubmit={handleSubmit(onSubmit)}>
+
+       <input defaultValue="" {...register("pdfContratOffre")} />
+      <input defaultValue="" {...register("user.id")} />
+      
+      <input defaultValue="" {...register("packoffre.id")} />
      
-      <input defaultValue="" type="file" {...register("document")}  webkitdirectory/>
-           
+      
       <input type="submit" />
     </form>
+    
     
              </Typography>
           </Box>
@@ -87,4 +77,4 @@ const UpdateInsurance = ({open,handleClose,sentModalData}) => {
     );
 };
 
-export default UpdateInsurance;
+export default UpdateOffer;

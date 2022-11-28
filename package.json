@@ -145,6 +145,8 @@
     "express": "4.16.4",
     "file-loader": "^6.2.0",
     "fontfaceobserver": "2.1.0",
+    "form-data": "^4.0.0",
+    "fs": "^0.0.1-security",
     "history": "4.9.0",
     "hoist-non-react-statics": "3.3.0",
     "html-webpack-plugin": "^5.5.0",
