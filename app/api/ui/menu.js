@@ -23,6 +23,13 @@ module.exports = [
         link: '/app/pages/table',
         icon: 'ion-ios-grid-outline',
       },
+
+      {
+        key: 'form',
+        name: 'Offer',
+        link: '/app/pages/form',
+        icon: 'ion-ios-list-box-outline',
+      },
             
       {
         key: 'main_page',
@@ -35,12 +42,7 @@ module.exports = [
         link: '/app/pages/dashboard',
         icon: 'ion-ios-home-outline',
       },
-      {
-        key: 'form',
-        name: 'Form',
-        link: '/app/pages/form',
-        icon: 'ion-ios-list-box-outline',
-      },
+     
       
       {
         key: 'maintenance',

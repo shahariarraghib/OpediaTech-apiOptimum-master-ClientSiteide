@@ -6,20 +6,22 @@ import brand from 'dan-api/dummy/brand';
 import { RegisterForm } from 'dan-components';
 import styles from 'dan-components/Forms/user-jss';
 import axios from 'axios';
+import { useHistory } from "react-router-dom";
 
 function Register(props) {
   const [valueForm, setValueForm] = useState(null);
 
   const submitForm = values => {
-
+    const history = useHistory();
     console.log(values)
     axios.post("http://localhost:3890/api/authentication/register", values )
     .then((res) => {
       console.log('res',res);
       setTimeout(() => {
         setValueForm(values);
-        console.log(`You submitted:\n\n${valueForm}`);
-        window.location.href = '/app';
+        // console.log(`You submitted:\n\n${valueForm}`);
+        // window.location.href = '/app';
+        history.push("/login");
       }, 500);
      
 

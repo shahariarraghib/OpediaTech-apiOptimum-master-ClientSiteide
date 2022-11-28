@@ -33,7 +33,11 @@ function ResetPasswordafterCodeComponent(props) {
      .then((res) => {
      
       console.log(res)
-
+      setTimeout(() => {
+        
+        history.push("/login");
+        // console.log(`You submitted:\n\n${valueForm}`); // eslint-disable-line
+      }, 500);
  
 
 

@@ -1,14 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { useForm } from "react-hook-form";
 import FormData from 'form-data';
-import fs from "fs"
-import axios from 'axios';
-// var FormData = require('form-data');
-// var fs = require('fs');
+import "../utils/style.css"
 
 const style = {
     position: 'absolute',
@@ -25,34 +22,55 @@ const style = {
 const UpdateInsurance = ({open,handleClose,sentModalData}) => {
     console.log(sentModalData)
     const { register, handleSubmit, formState: { errors } } = useForm();
+    const [adminAction, setAdminAction] = useState(0)
+    const [fileName, setFileName] = useState("")
 
-  const onSubmit = (data) => {
+    const onSubmit = (data) => {
 
-    console.log('submit file',data);
+    console.log('submit file',data.document[0]);
+    const files = data.document
 
-    // var d = new FormData();
-    // // fs.ReadStream
-    // d.append('document', fs.createReadStream(data));
-    const files = data.document[0]
     const formData = new FormData()
-    formData.append('img', files)
-    
+    formData.append('document', files[0])
+
     fetch("http://localhost:3890/api/files/documents/create", {
         method: "POST",
         headers: {
-            'content-type': 'application/pdf',
+            // 'content-type': 'application/pdf',
              Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
         body: formData
       })
         .then((res) => res.json())
         .then((data) => {
-          console.log(data)
+          console.log(data.filename)
+          setFileName(data.filename)
+          setAdminAction(1)
         });
     
  
 
   }
+
+  const onSubmit1 = data => {
+    console.log(data);
+
+fetch("http://localhost:3890/api/contratassurance/active", {
+    method: "PUT",
+    headers: {
+        'content-type': 'application/json',
+         Authorization: `Bearer ${localStorage.getItem("token")}`,
+    },
+    body: JSON.stringify(data)
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      console.log(data)
+      setAdminAction(1)
+    });
+}
+
+
     return (
         <div>
         <Modal
@@ -73,12 +91,29 @@ const UpdateInsurance = ({open,handleClose,sentModalData}) => {
             </Typography>
             <Typography id="modal-modal-description" sx={{ mt: 2 }}> 
           
-      <form onSubmit={handleSubmit(onSubmit)}>
-     
-      <input defaultValue="" type="file" {...register("document")}  webkitdirectory/>
+          {adminAction?<form onSubmit={handleSubmit(onSubmit1)}>
+          <label>pdfContratAssurance:</label>
+           <input defaultValue={fileName} {...register("pdfContratAssurance")} />
+           <label>Operation:</label>
+           <input defaultValue="" {...register("operation")} />
+           <label>prixAssur:</label>
+           <input defaultValue="" {...register("prixAssur")} />
+           <label>packassur_id:</label>
+           <input defaultValue="" {...register("packassur_id")} />
+           <label>user_id:</label>
+           <input defaultValue="" {...register("user_id")} />
+           <label>idContrat:</label>
+           <input defaultValue="" {...register("idContrat")} />
            
-      <input type="submit" />
-    </form>
+           <input type="submit" />
+         </form> :<form onSubmit={handleSubmit(onSubmit)}>
+          <label>Select PDF:</label>
+          <input defaultValue="" type="file" {...register("document")}  webkitdirectory/>
+           
+          <input type="submit" />
+          </form>
+
+          }
     
              </Typography>
           </Box>

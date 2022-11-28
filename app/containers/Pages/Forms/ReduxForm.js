@@ -77,7 +77,7 @@ function ReduxForm() {
           <TableHead>
             <TableRow>
             <TableCell align="left">No.</TableCell>
-              <TableCell align="left">prixAssur</TableCell>
+              <TableCell align="left">prixOffre</TableCell>
               <TableCell align="left">operation</TableCell>
               <TableCell align="left">nomUser</TableCell>
               {/* <TableCell align="left">telUser</TableCell>
@@ -100,7 +100,7 @@ function ReduxForm() {
               <Button
               onClick={() => handleOpen(setSentModalData(user))} >
               
-              Update Insurance
+              Update Offer
             </Button>
               </TableCell>
               
