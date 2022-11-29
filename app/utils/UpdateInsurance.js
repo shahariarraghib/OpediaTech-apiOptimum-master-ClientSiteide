@@ -92,25 +92,43 @@ fetch("http://localhost:3890/api/contratassurance/active", {
             <Typography id="modal-modal-description" sx={{ mt: 2 }}> 
           
           {adminAction?<form onSubmit={handleSubmit(onSubmit1)}>
-          <label>pdfContratAssurance:</label>
-           <input defaultValue={fileName} {...register("pdfContratAssurance")} />
-           <label>Operation:</label>
-           <input defaultValue="" {...register("operation")} />
-           <label>prixAssur:</label>
+          {/* <label>pdfContratAssurance:</label> */}
+           <input defaultValue={fileName} {...register("pdfContratAssurance")} type="hidden"/>
+
+           {/* <label>Operation:</label>
+           <input defaultValue="" {...register("operation")} /> */}
+           <label>Prix Assurance:</label>
            <input defaultValue="" {...register("prixAssur")} />
-           <label>packassur_id:</label>
-           <input defaultValue="" {...register("packassur_id")} />
-           <label>user_id:</label>
-           <input defaultValue="" {...register("user_id")} />
-           <label>idContrat:</label>
-           <input defaultValue="" {...register("idContrat")} />
+
+           <label>Operation:</label>
+           {/* <input defaultValue={sentModalData.operation} {...register("operation")} /> */}
+
+            <select {...register("operation")}>
+            <option value="">Please choose an operation</option>
+            <option value="Traité">Traité</option>
+            <option value="En traitement">En traitement</option>
+          </select>
+
+
+           {/* <label>packassur_id:</label> */}
+           <input defaultValue={sentModalData?.packassurance?.id} {...register("packassur_id")} type="hidden"/>
+           {/* <label>user_id:</label> */}
+           <input defaultValue={sentModalData?.user?.id} {...register("user_id")} type="hidden"/>
+           {/* <label>idContrat:</label> */}
+           <input defaultValue={sentModalData?.id} {...register("idContrat")} type="hidden"/>
            
-           <input type="submit" />
+           <Box sx={{ mt: 5 }}>
+          <input type="submit" />
+          </Box>
+
          </form> :<form onSubmit={handleSubmit(onSubmit)}>
           <label>Select PDF:</label>
           <input defaultValue="" type="file" {...register("document")}  webkitdirectory/>
            
+          <Box sx={{ mt: 5 }}>
           <input type="submit" />
+          </Box>
+
           </form>
 
           }

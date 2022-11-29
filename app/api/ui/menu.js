@@ -36,26 +36,26 @@ module.exports = [
         name: 'Sample Page',
         title: true,
       },
-      {
-        key: 'dashboard',
-        name: 'Dashboard',
-        link: '/app/pages/dashboard',
-        icon: 'ion-ios-home-outline',
-      },
+      // {
+      //   key: 'dashboard',
+      //   name: 'Dashboard',
+      //   link: '/app/pages/dashboard',
+      //   icon: 'ion-ios-home-outline',
+      // },
      
       
-      {
-        key: 'maintenance',
-        name: 'Maintenance',
-        link: '/maintenance',
-        icon: 'ion-ios-build-outline'
-      },
-      {
-        key: 'coming_soon',
-        name: 'Coming Soon',
-        link: '/coming-soon',
-        icon: 'ion-ios-bonfire-outline'
-      },
+      // {
+      //   key: 'maintenance',
+      //   name: 'Maintenance',
+      //   link: '/maintenance',
+      //   icon: 'ion-ios-build-outline'
+      // },
+      // {
+      //   key: 'coming_soon',
+      //   name: 'Coming Soon',
+      //   link: '/coming-soon',
+      //   icon: 'ion-ios-bonfire-outline'
+      // },
     ]
   },
   {
@@ -126,40 +126,40 @@ module.exports = [
       },
     ]
   },
-  {
-    key: 'menu_levels',
-    name: 'Menu Levels',
-    multilevel: true,
-    icon: 'ion-ios-menu-outline',
-    child: [
-      {
-        key: 'level_1',
-        name: 'Level 1',
-        link: '/#'
-      },
-      {
-        key: 'level_2',
-        keyParent: 'menu_levels',
-        name: 'Level 2',
-        child: [
-          {
-            key: 'sub_menu_1',
-            name: 'Sub Menu 1',
-            link: '/#'
-          },
-          {
-            key: 'sub_menu_2',
-            name: 'Sub Menu 2',
-            link: '/#'
-          },
-        ]
-      },
-    ]
-  },
-  {
-    key: 'no_child',
-    name: 'One Level Menu',
-    icon: 'ion-ios-document-outline',
-    linkParent: '/app/blank-page',
-  }
+  // {
+  //   key: 'menu_levels',
+  //   name: 'Menu Levels',
+  //   multilevel: true,
+  //   icon: 'ion-ios-menu-outline',
+  //   child: [
+  //     {
+  //       key: 'level_1',
+  //       name: 'Level 1',
+  //       link: '/#'
+  //     },
+  //     {
+  //       key: 'level_2',
+  //       keyParent: 'menu_levels',
+  //       name: 'Level 2',
+  //       child: [
+  //         {
+  //           key: 'sub_menu_1',
+  //           name: 'Sub Menu 1',
+  //           link: '/#'
+  //         },
+  //         {
+  //           key: 'sub_menu_2',
+  //           name: 'Sub Menu 2',
+  //           link: '/#'
+  //         },
+  //       ]
+  //     },
+  //   ]
+  // },
+  // {
+  //   key: 'no_child',
+  //   name: 'One Level Menu',
+  //   icon: 'ion-ios-document-outline',
+  //   linkParent: '/app/blank-page',
+  // }
 ];

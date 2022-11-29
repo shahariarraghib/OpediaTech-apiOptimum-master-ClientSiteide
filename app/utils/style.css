@@ -1,5 +1,5 @@
 
-  input {
+  input,select {
     display: block;
     box-sizing: border-box;
     width: 90%;
@@ -7,6 +7,7 @@
     padding: 10px 15px;
     margin-bottom: 10px;
     font-size: 14px;
+    border: 2px solid black;
   }
   
   label {
@@ -47,7 +48,7 @@
     opacity: 0.4;
   }
   
-  input[type="button"]:hover {
+  input,select[type="button"]:hover {
     transition: 0.3s all;
   }
   

@@ -36,7 +36,11 @@ const [sentData, setSentData] = useState([])
           <TableHead>
             <TableRow>
             <TableCell align="left">No.</TableCell>
-              <TableCell align="left">nomUser</TableCell>
+
+              <TableCell align="left">First name</TableCell>
+              <TableCell align="left">Last name</TableCell>
+              <TableCell align="left">Email</TableCell>
+
               <TableCell align="left">adrUser</TableCell>
               <TableCell align="left">telUser</TableCell>
               <TableCell align="left">validiteAdresse</TableCell>
@@ -50,6 +54,9 @@ const [sentData, setSentData] = useState([])
               <TableRow>
               <TableCell align="left">{index + 1}</TableCell>
               <TableCell align="left">{user.nomUser}</TableCell>
+              <TableCell align="left">{user.prenomUser}</TableCell>
+              <TableCell align="left">{user.emailUser}</TableCell>
+
               <TableCell align="left">{user.adrUser}</TableCell>
               <TableCell align="left">{user.telUser}</TableCell>
               <TableCell align="left">{user.validiteAdresse}</TableCell>

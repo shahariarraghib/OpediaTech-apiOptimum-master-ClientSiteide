@@ -23,8 +23,8 @@ function Auth() {
         <Route path="/reset-password" component={ResetPassword} />
         <Route path="/send-code" component={SendCodeOtpComponent} />
         <Route path="/reset-password-code" component={ResetPasswordafterCodeComponent} />
-        <Route path="/maintenance" component={Maintenance} />
-        <Route path="/coming-soon" component={ComingSoon} />
+        {/* <Route path="/maintenance" component={Maintenance} /> */}
+        {/* <Route path="/coming-soon" component={ComingSoon} /> */}
         <Route component={NotFound} />
       </Switch>
     </Outer>

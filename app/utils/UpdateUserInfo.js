@@ -76,7 +76,9 @@ const UpdateUserInfo = ({open,handleClose,sentData}) => {
            <br/>
     
       
-      <input type="submit" />
+           <Box sx={{ mt: 5 }}>
+          <input type="submit" />
+          </Box>
     </form>
             {/* </Typography> */}
           </Box>

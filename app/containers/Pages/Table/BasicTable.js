@@ -16,8 +16,8 @@ function BasicTable(props) {
   const description = brand.desc;
   const [sentData, setSentData] = useState([])
   const [users, setUsers] = useState([])
-  // console.log(users)
-  console.log(sentData)
+  console.log(users)
+  // console.log(sentData)
   useEffect(() => {
 
     fetch("http://localhost:3890/api/contratassurance/getAll",{
@@ -58,7 +58,7 @@ function BasicTable(props) {
         <div>
           {/* <StrippedTable /> */}
         </div>
-      </PapperBlock>
+     
       
       
       <div>
@@ -70,11 +70,18 @@ function BasicTable(props) {
           <TableHead>
             <TableRow>
             <TableCell align="left">No.</TableCell>
-              <TableCell align="left">prixAssur</TableCell>
+
+            <TableCell align="left">First name</TableCell>
+              <TableCell align="left">Last name</TableCell>
+              <TableCell align="left">Email</TableCell>
+
+              <TableCell align="left">packAssurance</TableCell>
+              <TableCell align="left">Company</TableCell>
+              <TableCell align="left">Signature</TableCell>
+              <TableCell align="left">Prix Assurance</TableCell>
               <TableCell align="left">operation</TableCell>
-              <TableCell align="left">nomUser</TableCell>
-              <TableCell align="left">telUser</TableCell>
-              <TableCell align="left">emailUser</TableCell>
+            
+             
             </TableRow>
           </TableHead>
           <TableBody>
@@ -83,11 +90,18 @@ function BasicTable(props) {
              {users.map((user, index) => ( 
               <TableRow >
               <TableCell align="left">{index + 1}</TableCell>
+              <TableCell align="left">{user.user.nomUser}</TableCell>
+              <TableCell align="left">{user.user.prenomUser}</TableCell>
+              <TableCell align="left">{user.user.emailUser}</TableCell>
+
+              <TableCell align="left">{user.packassurance.nomAssur}</TableCell>
+              <TableCell align="left">{user.packassurance?.compagnie?.nomCompagnie}</TableCell>
+              <TableCell align="left"><img src={user.signature} className="w3-left w3-circle w3-margin-right" width="100px" /></TableCell>
               <TableCell align="left">{user.prixAssur}</TableCell>
               <TableCell align="left">{user.operation}</TableCell>
-              <TableCell align="left">{user.user.nomUser}</TableCell>
-              <TableCell align="left">{user.user.telUser}</TableCell>
-              <TableCell align="left">{user.user.emailUser}</TableCell>
+              
+         
+              
               <TableCell align="left">
 
               <Button
@@ -122,6 +136,7 @@ function BasicTable(props) {
    
     
       </div>
+      </PapperBlock>
     </div></>
   );
 }

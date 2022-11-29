@@ -48,10 +48,10 @@ export const Error = loadable(() =>
   import('./Pages/Error'), {
     fallback: <Loading />,
   });
-export const Maintenance = loadable(() =>
-  import('./Pages/Maintenance'), {
-    fallback: <Loading />,
-  });
+// export const Maintenance = loadable(() =>
+//   import('./Pages/Maintenance'), {
+//     fallback: <Loading />,
+//   });
 export const ComingSoon = loadable(() =>
   import('./Pages/ComingSoon'), {
     fallback: <Loading />,

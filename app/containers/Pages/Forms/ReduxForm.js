@@ -77,11 +77,18 @@ function ReduxForm() {
           <TableHead>
             <TableRow>
             <TableCell align="left">No.</TableCell>
-              <TableCell align="left">prixOffre</TableCell>
+            <TableCell align="left">First name</TableCell>
+            <TableCell align="left">Last name</TableCell>
+            <TableCell align="left">Emai</TableCell>
+            <TableCell align="left">packOffre</TableCell>
+            <TableCell align="left">Signature</TableCell>
+
+            <TableCell align="left">Prix Offre</TableCell>
+
               <TableCell align="left">operation</TableCell>
-              <TableCell align="left">nomUser</TableCell>
-              {/* <TableCell align="left">telUser</TableCell>
-              <TableCell align="left">emailUser</TableCell> */}
+              
+             
+            
             </TableRow>
           </TableHead>
           <TableBody>
@@ -90,11 +97,17 @@ function ReduxForm() {
              {users.map((user, index) => ( 
               <TableRow >
               <TableCell align="left">{index + 1}</TableCell>
-              <TableCell align="left">{user.operation}</TableCell>
+              <TableCell align="left">{user.user.nomUser}</TableCell>
+              <TableCell align="left">{user.user.prenomUser}</TableCell>
+              <TableCell align="left">{user.user.emailUser}</TableCell>
+              <TableCell align="left">{user?.packOffre?.nomOffre}</TableCell>
+
+              <TableCell align="left"><img src={user.signature} className="w3-left w3-circle w3-margin-right" width="100px" height="40px" /></TableCell>
+
               <TableCell align="left">{user.prixOffre}</TableCell>
-              <TableCell align="left">{user.packoffre.id}</TableCell>
-              {/* <TableCell align="left">{user.user.telUser}</TableCell>
-              <TableCell align="left">{user.user.emailUser}</TableCell> */}
+              <TableCell align="left">{user.operation}</TableCell>
+            
+              
               <TableCell align="left">
 
               <Button

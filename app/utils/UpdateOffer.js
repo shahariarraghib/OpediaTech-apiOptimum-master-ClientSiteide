@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { useForm } from "react-hook-form";
 import "../utils/style.css"
@@ -13,7 +12,6 @@ const style = {
     transform: 'translate(-50%, -50%)',
     width: 600,
     bgcolor: 'background.paper',
-    // border: '2px solid #e6fbff',
     boxShadow: 24,
     p: 4,
 
@@ -22,8 +20,8 @@ const style = {
 
 
 const UpdateOffer = ({open,handleClose,sentModalData}) => {
-    // const [adminAction, setAdminAction] = useState(0)
-    // console.log(adminAction)
+
+    console.log("modalvalue:", sentModalData)
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
 
     const onSubmit = data => {
@@ -40,28 +38,12 @@ const UpdateOffer = ({open,handleClose,sentModalData}) => {
         .then((res) => res.json())
         .then((data) => {
           console.log(data)
-        //   setAdminAction(1)
+        
         });
     }
 
 
-    // const onSubmit1 = data => {
-    //     console.log(data);
 
-    // fetch("http://localhost:3890/api/contratoffre/active", {
-    //     method: "PUT",
-    //     headers: {
-    //         'content-type': 'application/json',
-    //          Authorization: `Bearer ${localStorage.getItem("token")}`,
-    //     },
-    //     body: JSON.stringify(data)
-    //   })
-    //     .then((res) => res.json())
-    //     .then((data) => {
-    //       console.log(data)
-    //       setAdminAction(1)
-    //     });
-    // }
 
 
 
@@ -84,41 +66,32 @@ const UpdateOffer = ({open,handleClose,sentModalData}) => {
              Update Offer
             </Typography>
             <Typography id="modal-modal-description" sx={{ mt: 2 }}> 
-         {/* {
-            adminAction? */}
-            
-            
+               
             <form onSubmit={handleSubmit(onSubmit)}>
-            <label>Operation:</label>
-           <input defaultValue={sentModalData.operation} {...register("operation")} />
-           <label>prixOffre:</label>
+            <label>prixOffre:</label>
            <input defaultValue="" {...register("prixOffre")} />
-           <label>packoffre_id:</label>
-           <input defaultValue="" {...register("packoffre_id")} />
-           <label>user_id:</label>
-           <input defaultValue="" {...register("user_id")} />
-           <label>idContrat:</label>
-           <input defaultValue="" {...register("idContrat")} />
+
+            <label>Operation:</label>
+           {/* <input defaultValue={sentModalData.operation} {...register("operation")} /> */}
+
+            <select {...register("operation")}>
+            <option value="">Please choose an operation</option>
+            <option value="Traité">Traité</option>
+            <option value="En traitement">En traitement</option>
+          </select>
            
-           <input type="submit" />
+           {/* <label>packoffre_id:</label> */}
+           <input defaultValue={sentModalData.packoffre?.id}  {...register("packoffre_id")} type="hidden"/>
+           {/* <label>user_id:</label> */}
+           <input defaultValue={sentModalData?.user?.id}  {...register("user_id")} type="hidden"/>
+           {/* <label>idContrat:</label> */}
+           <input defaultValue={sentModalData.id} {...register("idContrat")} type="hidden"/>
+           
+          <Box sx={{ mt: 5 }}>
+          <input type="submit" />
+          </Box>
          </form>
-         
-         
-         {/* : <form onSubmit={handleSubmit(onSubmit1)}>
-         <label>pdfContratOffre:</label>
-          <input defaultValue="" {...register("pdfContratOffre")} />
-          <label>user:</label>
-          <input defaultValue="" {...register("user.id")} />
-          <label>packoffre:</label>
-          <input defaultValue="" {...register("packoffre.id")} />
-
-
-         <input type="submit" />
-</form>
-
-
-         } */}
-    
+                    
     
              </Typography>
           </Box>
